@@ -2,6 +2,7 @@ module TestSamples
 
 using GeneratorsX
 using Test
+using Transducers: Map
 
 @generator noone() = nothing
 @generator oneone() = @yield 1
@@ -57,6 +58,7 @@ end
 @testset "$label" for (label, (f, args, kwargs, comparison, desired)) in testdata
     ==′ = comparison
     @test collect(f(args...; kwargs...)) ==′ desired
+    @test collect(Map(identity), f(args...; kwargs...)) ==′ desired
 end
 
 end  # module

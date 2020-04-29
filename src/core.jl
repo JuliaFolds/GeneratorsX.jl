@@ -34,6 +34,8 @@ macro generator(ex)
         Base.iterate(it::$structname) =
             $start_generator($traceename, $([:(it.$a) for a in allargs]...))
         Base.iterate(::$structname, state) = state()
+        $(define_foldl(__module__, structname, allargs, body))
+        nothing
     end |> esc
 end
 
