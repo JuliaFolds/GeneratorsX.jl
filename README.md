@@ -4,6 +4,8 @@ GeneratorsX.jl is a package for defining `iterate` and `foldl` with a
 single easy-to-read source code.
 
 ```julia
+julia> using GeneratorsX
+
 julia> @generator function generate123()
            @yield 1
            @yield 2
