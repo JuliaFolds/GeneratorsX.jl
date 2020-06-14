@@ -26,6 +26,38 @@ Julia's `iterate`-based iteration protocol.  It also derives
 [Transducers.jl](https://github.com/tkf/Transducers.jl) using a simple
 AST transformation.
 
+## Why?
+
+Defining `iterate` for a collection is hard because the programmer has
+to come up with an adequate state machine and code it carefully.  Both
+of these processes are hard.  Furthermore, the `julia` and LLVM
+compilers do not produce optimal machine code from the loop involving
+`iterate`.  More importantly, it is hard for the programmer to
+directly control what would happen in the end result by using
+`iterate` since there are many complex transformations from their
+mental of the collection and the final machine code.
+
+GeneratorsX.jl solves the first problem by providing a syntax sugar
+for defining `iterate`.  Since this can use arbitrary Julia control
+flow constructs, the programmer can write down what they mean by using
+the natural Julia syntax.
+
+The second problem (sub-optimal performance) is solved by generating
+`foldl` from the same syntax sugar that generates `iterate`.  Since
+the syntax sugar used by GeneratorsX.jl directly translates to the
+`foldl` definition, it can be optimized much easily by the compiler
+and it is much easier for the programmer to control the performance
+characteristics.  This is vital for defining fast iteration over
+blocked/nested data structures as well as collections with
+heterogeneously typed elements.
+
+However, this `foldl`-based solution applied alone without generating
+`iterate` would have created the third problem: `zip` can be
+implemented by `iterate` but not with `foldl`.  More in general, the
+new collection wouldn't work with `iterate`-based existing code.  This
+is why GeneratorsX.jl defines `iterate` and `foldl` from the same
+expression.
+
 ## See also
 
 * [ResumableFunctions.jl](https://github.com/BenLauwens/ResumableFunctions.jl)
