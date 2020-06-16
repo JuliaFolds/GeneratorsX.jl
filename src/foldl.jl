@@ -1,5 +1,5 @@
 function define_foldl(yielded::Function, structname, allargs, body)
-    @gensym rf acc xs
+    @gensym rf acc
     completion = :(return $Transducers.complete($rf, $acc))
     function rewrite(body)
         body isa Expr || return body
@@ -20,7 +20,13 @@ function define_foldl(yielded::Function, structname, allargs, body)
         return Expr(body.head, map(rewrite, body.args)...)
     end
     body = rewrite(body)
-    unpack = [:($a = $xs.$a) for a in allargs]
+    if allargs isa Symbol
+        xs = allargs
+        unpack = []
+    else
+        @gensym xs
+        unpack = [:($a = $xs.$a) for a in allargs]
+    end
     return quote
         function $Transducers.__foldl__($rf, $acc, $xs::$structname)
             $(unpack...)

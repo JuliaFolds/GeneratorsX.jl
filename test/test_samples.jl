@@ -26,6 +26,24 @@ end
     end
 end
 
+struct Count
+    start::Int
+    stop::Int
+end
+
+Base.length(itr::Count) = max(0, itr.stop - itr.start + 1)
+Base.eltype(::Type{<:Count}) = Int
+
+@generator function (itr::Count)
+    i = itr.start
+    i > itr.stop && return
+    while true
+        @yield i
+        i == itr.stop && break
+        i += 1
+    end
+end
+
 raw_testdata = """
 noone() == []
 oneone() == [1]
@@ -36,6 +54,8 @@ iid(oneone()) == [1]
 iid(onetwothree()) == [1, 2, 3]
 iflatten([[1], [2, 3], [4]]) == [1, 2, 3, 4]
 iflatten([[1], (2, 3), 4]) == [1, 2, 3, 4]
+Count(0, 2) == [0, 1, 2]
+Count(0, -1) == Int[]
 """
 
 args_and_kwargs(args...; kwargs...) = args, (; kwargs...)

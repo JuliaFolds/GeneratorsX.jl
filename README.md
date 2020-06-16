@@ -1,7 +1,8 @@
 # GeneratorsX: `iterate` and `foldl` for humans™
 
 GeneratorsX.jl is a package for defining `iterate` and `foldl` with a
-single easy-to-read source code.
+single easy-to-read source code.  An example for creating an ad-hoc
+iterable:
 
 ```julia
 julia> using GeneratorsX
@@ -17,6 +18,36 @@ julia> collect(generate123())
  1
  2
  3
+```
+
+It is also possible to use it to define the iteration protocols for
+existing type:
+
+```julia
+julia> struct Count
+           start::Int
+           stop::Int
+       end;
+
+julia> Base.length(itr::Count) = max(0, itr.stop - itr.start + 1);
+
+julia> Base.eltype(::Type{<:Count}) = Int;
+
+julia> @generator function (itr::Count)
+           i = itr.start
+           i > itr.stop && return
+           while true
+               @yield i
+               i == itr.stop && break
+               i += 1
+           end
+       end;
+
+julia> collect(Count(0, 2))
+3-element Array{Int64,1}:
+ 0
+ 1
+ 2
 ```
 
 GeneratorsX.jl uses

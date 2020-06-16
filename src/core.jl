@@ -5,7 +5,27 @@ macro yield(x)
 end
 
 macro generator(ex)
+    if isexpr(ex, :function, 2) && isexpr(ex.args[1], :tuple, 1)
+        ex.args[1] = Expr(:call, :_, ex.args[1].args...)
+        # Update MacroTools.jl after anonymous function is supported:
+        # https://github.com/MikeInnes/MacroTools.jl/pull/140
+    end
     def = splitdef(ex)
+
+    if def[:name] === :_
+        @assert isempty(def[:kwargs])
+        @assert length(def[:args]) == 1
+        @assert @capture(def[:args][1], collection_::typename_)
+        traceename = gensym(string(typename, "#tracee"))
+        def[:name] = traceename
+        return quote
+            $Base.@inline $(combinedef(def))
+            Base.iterate(x::$typename) = $start_generator($traceename, x)
+            Base.iterate(::$typename, state) = state()
+            $(define_foldl(__module__, typename, collection, def[:body]))
+            nothing
+        end |> esc
+    end
 
     allargs = map([def[:args]; def[:kwargs]]) do x
         if @capture(x, args_...)
