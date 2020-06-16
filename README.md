@@ -89,6 +89,16 @@ new collection wouldn't work with `iterate`-based existing code.  This
 is why GeneratorsX.jl defines `iterate` and `foldl` from the same
 expression.
 
+## Caveats
+
+GeneratorsX.jl is still a proof-of-concept.  As of writing, it works
+only with Julia 1.5 beta due to
+[IRTools.jl#55](https://github.com/MikeInnes/IRTools.jl/issues/55).
+Furthermore, the performance is likely to be awful when consuming the
+collection without `foldl`-based frameworks such as
+[Transducers.jl](https://github.com/JuliaFolds/Transducers.jl) and
+[FLoops.jl](https://github.com/JuliaFolds/FLoops.jl).
+
 ## See also
 
 * [ResumableFunctions.jl](https://github.com/BenLauwens/ResumableFunctions.jl)
