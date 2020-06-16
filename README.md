@@ -1,5 +1,7 @@
 # GeneratorsX: `iterate` and `foldl` for humans™
 
+[![GitHub Actions](https://github.com/JuliaFolds/GeneratorsX.jl/workflows/Run%20tests/badge.svg)](https://github.com/JuliaFolds/GeneratorsX.jl/actions?query=workflow%3A%22Run+tests%22)
+
 GeneratorsX.jl is a package for defining `iterate` and `foldl` with a
 single easy-to-read source code.  An example for creating an ad-hoc
 iterable:
