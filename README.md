@@ -114,3 +114,5 @@ collection without `foldl`-based frameworks such as
   high-performance iteration.
 * [Transducers & Effects – Mike Innes](http://mikeinnes.github.io/2020/06/12/transducers.html):
   Exploration of a similar idea by the author of IRTools.jl.
+  See also a discussion in Discourse:
+  [Comments on "Transducers & Effects – Mike Innes" - Internals & Design / Internals - JuliaLang](https://discourse.julialang.org/t/comments-on-transducers-effects-mike-innes/41353)
