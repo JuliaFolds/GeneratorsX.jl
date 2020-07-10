@@ -103,6 +103,24 @@ collection without `foldl`-based frameworks such as
 
 ## See also
 
+* [Continuables.jl](https://github.com/schlichtanders/Continuables.jl)
+  takes an approach very similar to `foldl` portion of GeneratorsX.jl.
+  An important difference is that it uses `foreach`-like function
+  instead of `foldl` as the basic building block of the iterations.
+  Consequently, it relies on `Ref` for constructing stateful
+  accumulation.  This approach can introduce performance problems if
+  the compiler cannot elide the heap-allocations of the state and it
+  is not applicable for type-changing state.  Another difference to
+  GeneratorsX.jl is that Continuables.jl does not provide `iterate`
+  hence supporting `zip` is impossible (without extending the
+  compiler).  On the other hand, it also has very similar mechanisms
+  to Transducers.jl version of `foldl`.  For example, it uses an
+  approach similar to
+  [InitialValues.jl](https://github.com/JuliaFolds/InitialValues.jl)
+  to implement robust initial value handling.  See also its
+  [README](https://github.com/schlichtanders/Continuables.jl/blob/master/README.md)
+  which includes benchmarks and discussions, especially in contrasts
+  with ResumableFunctions.jl and `Channel`.
 * [ResumableFunctions.jl](https://github.com/BenLauwens/ResumableFunctions.jl)
   can be used to create more flexible full-blown coroutine.  However,
   since its implementation is based on mutation, it's not the best
