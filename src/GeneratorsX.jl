@@ -8,7 +8,10 @@ end GeneratorsX
 
 export @generator, @yield
 
+import ContextualMacros
+using AbstractYieldMacros: @yield, @yieldfrom
 using Base.Meta: isexpr
+using FGenerators: define_foldl
 using IRTools
 using IRTools: @dynamo, IR, Statement, argument!, arguments, functional, return!, xcall
 using MacroTools: @capture, combinedef, prewalk, splitdef
@@ -16,6 +19,5 @@ using Transducers: Transducers
 
 include("utils.jl")
 include("core.jl")
-include("foldl.jl")
 
 end # module
