@@ -1,5 +1,13 @@
 # This file is machine-generated - editing it directly is not advised
 
+[[AbstractYieldMacros]]
+deps = ["ContextualMacros"]
+git-tree-sha1 = "cfafc35b1645a114e4d55526a384ba58eb8900d7"
+repo-rev = "master"
+repo-url = "https://github.com/JuliaFolds/AbstractYieldMacros.jl.git"
+uuid = "71802903-5811-4e1f-b8e7-37bd234b68eb"
+version = "0.1.0"
+
 [[ArgCheck]]
 git-tree-sha1 = "dedbbb2ddb876f899585c4ec4433265e3017215a"
 uuid = "dce04be8-c92d-5529-be00-80e4d2c0e197"
@@ -35,6 +43,11 @@ version = "0.1.0"
 git-tree-sha1 = "a2a6a5fea4d6f730ec4c18a76d27ec10e8ec1c50"
 uuid = "187b0558-2788-49d3-abe0-74a17ed4e7c9"
 version = "1.0.0"
+
+[[ContextualMacros]]
+git-tree-sha1 = "1cf761fab00463b7967664a1e920645e9e6c6393"
+uuid = "18b01625-79e3-4c41-8668-c88bdfdd3c6f"
+version = "0.1.0"
 
 [[DataAPI]]
 git-tree-sha1 = "176e23402d80e7743fc26c19c681bfb11246af32"
