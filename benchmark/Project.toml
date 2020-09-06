@@ -1,5 +1,6 @@
 [deps]
 AbstractYieldMacros = "71802903-5811-4e1f-b8e7-37bd234b68eb"
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+FGenerators = "4fd0377b-cfdc-4941-97f4-8d7ddbb8981e"
 GeneratorsX = "b9fe75cc-d44c-4b67-9646-1eca8ff4e0d0"
 Transducers = "28d57a85-8fef-5791-bfe6-a80928e7c999"

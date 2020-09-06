@@ -44,6 +44,12 @@ git-tree-sha1 = "a2a6a5fea4d6f730ec4c18a76d27ec10e8ec1c50"
 uuid = "187b0558-2788-49d3-abe0-74a17ed4e7c9"
 version = "1.0.0"
 
+[[ContextVariablesX]]
+deps = ["Compat", "Logging", "UUIDs"]
+git-tree-sha1 = "f4b33f7da62cc7fb2421771baa466105b6cb002f"
+uuid = "6add18c4-b38d-439d-96f6-d6bc489c04c5"
+version = "0.1.0"
+
 [[ContextualMacros]]
 git-tree-sha1 = "1cf761fab00463b7967664a1e920645e9e6c6393"
 uuid = "18b01625-79e3-4c41-8668-c88bdfdd3c6f"
@@ -75,6 +81,20 @@ uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
 [[Distributed]]
 deps = ["Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+
+[[FGenerators]]
+deps = ["FLoopsBase", "MacroTools", "Transducers"]
+git-tree-sha1 = "ebdc6ff9beda3e623458748ef33fcb894ef3163a"
+repo-rev = "master"
+repo-url = "https://github.com/JuliaFolds/FGenerators.jl.git"
+uuid = "4fd0377b-cfdc-4941-97f4-8d7ddbb8981e"
+version = "0.1.3-DEV"
+
+[[FLoopsBase]]
+deps = ["ContextVariablesX"]
+git-tree-sha1 = "cf3d8b2527be12d204d06aba922b30339a9653dd"
+uuid = "b9860ae5-e623-471e-878b-f6a53c775ea6"
+version = "0.1.0"
 
 [[Future]]
 deps = ["Random"]
