@@ -39,9 +39,9 @@ uuid = "187b0558-2788-49d3-abe0-74a17ed4e7c9"
 version = "1.0.0"
 
 [[ContextualMacros]]
-path = "../../../../../../ContextualMacros"
+git-tree-sha1 = "1cf761fab00463b7967664a1e920645e9e6c6393"
 uuid = "18b01625-79e3-4c41-8668-c88bdfdd3c6f"
-version = "0.1.1-DEV"
+version = "0.1.0"
 
 [[DataAPI]]
 git-tree-sha1 = "176e23402d80e7743fc26c19c681bfb11246af32"
