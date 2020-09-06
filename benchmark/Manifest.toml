@@ -101,7 +101,7 @@ deps = ["Random"]
 uuid = "9fa8497b-333b-5362-9e8d-4d0656e87820"
 
 [[GeneratorsX]]
-deps = ["AbstractYieldMacros", "ContextualMacros", "IRTools", "MacroTools", "Transducers"]
+deps = ["AbstractYieldMacros", "ContextualMacros", "FGenerators", "IRTools", "MacroTools", "Transducers"]
 path = ".."
 uuid = "b9fe75cc-d44c-4b67-9646-1eca8ff4e0d0"
 version = "0.1.0"
