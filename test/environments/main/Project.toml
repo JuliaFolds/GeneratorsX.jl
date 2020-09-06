@@ -1,0 +1,4 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+GeneratorsX = "b9fe75cc-d44c-4b67-9646-1eca8ff4e0d0"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
