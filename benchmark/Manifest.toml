@@ -82,7 +82,7 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[FGenerators]]
 deps = ["AbstractYieldMacros", "ContextualMacros", "FLoopsBase", "MacroTools", "Transducers"]
-git-tree-sha1 = "ff4d90e8e66280e9ba5b53d4c4edb5ad9f40bea3"
+git-tree-sha1 = "5a1f7f0a7ac664930e599404847eaef729347fb4"
 repo-rev = "master"
 repo-url = "https://github.com/JuliaFolds/FGenerators.jl.git"
 uuid = "4fd0377b-cfdc-4941-97f4-8d7ddbb8981e"
