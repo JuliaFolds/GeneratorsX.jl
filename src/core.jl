@@ -1,8 +1,12 @@
 __yield__(x = nothing) = error("@yield used outside @generator")
 
-macro yield(x)
-    :(__yield__($(esc(x))) && return)
+function on_yield(ctx)
+    @assert length(ctx.args) == 1
+    x, = ctx.args
+    :($__yield__($(esc(x))) && return)
 end
+
+on_yieldfrom(_) = error("@yieldfrom not implemented")
 
 macro generator(ex)
     if isexpr(ex, :function, 2) && isexpr(ex.args[1], :tuple, 1)
@@ -11,6 +15,17 @@ macro generator(ex)
         # https://github.com/MikeInnes/MacroTools.jl/pull/140
     end
     def = splitdef(ex)
+
+    body0 = def[:body]
+    body = ContextualMacros.expandwith(
+        __module__,
+        body0,
+        yield = on_yield,
+        yieldfrom = on_yieldfrom,
+    )
+    def[:body] = body
+
+    funcname = :($Transducers.__foldl__)
 
     if def[:name] === :_
         @assert isempty(def[:kwargs])
@@ -22,7 +37,7 @@ macro generator(ex)
             $Base.@inline $(combinedef(def))
             Base.iterate(x::$typename) = $start_generator($traceename, x)
             Base.iterate(::$typename, state) = state()
-            $(define_foldl(__module__, typename, collection, def[:body]))
+            $(define_foldl(__module__, funcname, typename, collection, body0))
             nothing
         end |> esc
     end
@@ -40,7 +55,6 @@ macro generator(ex)
     structfields = [:($a::$T) for (a, T) in zip(allargs, structparams)]
 
     traceename = gensym(string(def[:name], "#tracee"))
-    body = def[:body]
 
     def[:body] = :($structname($(allargs...)))
     quote
@@ -54,7 +68,7 @@ macro generator(ex)
         Base.iterate(it::$structname) =
             $start_generator($traceename, $([:(it.$a) for a in allargs]...))
         Base.iterate(::$structname, state) = state()
-        $(define_foldl(__module__, structname, allargs, body))
+        $(define_foldl(__module__, funcname, structname, allargs, body0))
         nothing
     end |> esc
 end
