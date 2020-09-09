@@ -2,9 +2,7 @@
 
 [[AbstractYieldMacros]]
 deps = ["ContextualMacros"]
-git-tree-sha1 = "cfafc35b1645a114e4d55526a384ba58eb8900d7"
-repo-rev = "master"
-repo-url = "https://github.com/JuliaFolds/AbstractYieldMacros.jl.git"
+git-tree-sha1 = "070897c0544f5cc60615395f6d2cd2d69ceea42a"
 uuid = "71802903-5811-4e1f-b8e7-37bd234b68eb"
 version = "0.1.0"
 
