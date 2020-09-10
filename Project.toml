@@ -12,6 +12,7 @@ MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 Transducers = "28d57a85-8fef-5791-bfe6-a80928e7c999"
 
 [compat]
+AbstractYieldMacros = "0.1"
 IRTools = "0.3, 0.4"
 MacroTools = "0.5"
 Transducers = "0.4"
