@@ -1,4 +1,5 @@
 [deps]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 FGenerators = "4fd0377b-cfdc-4941-97f4-8d7ddbb8981e"
 GeneratorsX = "b9fe75cc-d44c-4b67-9646-1eca8ff4e0d0"
